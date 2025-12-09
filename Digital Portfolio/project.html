@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Anet Askarov – Digital Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Digital portfolio of Askarov Anet, Computer Science student with a focus on cybersecurity and network security.">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Reset */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            line-height: 1.6;
+            color: #e5e7eb;
+            background: radial-gradient(circle at top left, #1f2933 0, #020617 32%, #020617 100%);
+        }
+
+        a {
+            color: inherit;
+        }
+
+        /* Layout helpers */
+        .container {
+            width: 100%;
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .section {
+            padding: 4.5rem 0;
+        }
+
+        .section-alt {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(8px);
+        }
+
+        .section-title {
+            font-size: 1.9rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: #f9fafb;
+            letter-spacing: 0.03em;
+        }
+
+        .section-eyebrow {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            color: #6ee7b7;
+            margin-bottom: 0.35rem;
+        }
+
+        .section-intro {
+            max-width: 720px;
+            margin-bottom: 2rem;
+            color: #9ca3af;
+        }
+
+        /* Header and navigation */
+        .site-header {
+            background: rgba(15, 23, 42, 0.96);
+            border-bottom: 1px solid rgba(55, 65, 81, 0.85);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            padding: 0.8rem 0;
+        }
+
+        .site-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #f9fafb;
+        }
+
+        .site-subtitle {
+            font-size: 0.9rem;
+            color: #9ca3af;
+        }
+
+        .logo-block {
+            display: flex;
+            flex-direction: column;
+            gap: 0.15rem;
+        }
+
+        .main-nav {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .main-nav a {
+            font-size: 0.9rem;
+            color: #d1d5db;
+            text-decoration: none;
+            padding: 0.4rem 0.9rem;
+            border-radius: 999px;
+            border: 1px solid transparent;
+            transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+        }
+
+        .main-nav a:hover {
+            background: radial-gradient(circle at top, rgba(16, 185, 129, 0.12), transparent 55%);
+            border-color: rgba(16, 185, 129, 0.6);
+            color: #f9fafb;
+            transform: translateY(-1px);
+        }
+
+        /* Hero section */
+        .hero {
+            padding: 4rem 0 3.5rem 0;
+            position: relative;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: -80px 0 auto 0;
+            height: 320px;
+            pointer-events: none;
+            background:
+                radial-gradient(circle at top left, rgba(52, 211, 153, 0.22), transparent 55%),
+                radial-gradient(circle at top right, rgba(59, 130, 246, 0.14), transparent 55%);
+            opacity: 0.9;
+            z-index: -1;
+        }
+
+        .hero-inner {
+            display: grid;
+            grid-template-columns: minmax(0, 3fr) minmax(0, 2.2fr);
+            gap: 2.75rem;
+            align-items: center;
+        }
+
+        .hero-eyebrow {
+            font-size: 0.8rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: #6ee7b7;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero h2 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: #f9fafb;
+        }
+
+        .hero-subline {
+            font-size: 1rem;
+            color: #9ca3af;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero-body {
+            color: #d1d5db;
+            margin-bottom: 1.6rem;
+            font-size: 0.98rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.85rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.65rem 1.4rem;
+            border-radius: 999px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease, transform 0.15s ease;
+        }
+
+        .btn.primary {
+            background: linear-gradient(135deg, #10b981, #22c55e);
+            color: #022c22;
+            border-color: rgba(16, 185, 129, 0.9);
+            box-shadow: 0 16px 35px rgba(16, 185, 129, 0.35);
+        }
+
+        .btn.primary:hover {
+            background: linear-gradient(135deg, #22c55e, #4ade80);
+            box-shadow: 0 18px 40px rgba(34, 197, 94, 0.45);
+            transform: translateY(-1px);
+        }
+
+        .btn.secondary {
+            background: rgba(15, 23, 42, 0.9);
+            color: #a7f3d0;
+            border-color: rgba(16, 185, 129, 0.6);
+        }
+
+        .btn.secondary:hover {
+            background: rgba(17, 24, 39, 1);
+            border-color: rgba(52, 211, 153, 0.9);
+            box-shadow: 0 12px 30px rgba(15, 118, 110, 0.4);
+            transform: translateY(-1px);
+        }
+
+        .hero-photo {
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-photo-frame {
+            position: relative;
+            padding: 0.2rem;
+            border-radius: 1.75rem;
+            background:
+                linear-gradient(135deg, rgba(16, 185, 129, 0.18), transparent 40%),
+                linear-gradient(315deg, rgba(96, 165, 250, 0.22), transparent 45%);
+            box-shadow: 0 22px 60px rgba(15, 23, 42, 0.9);
+        }
+
+        .hero-photo img {
+            width: 320px;
+            height: 320px;
+            object-fit: cover;
+            border-radius: 1.5rem;
+            display: block;
+        }
+
+        .hero-photo-badge {
+            position: absolute;
+            left: 12px;
+            bottom: 16px;
+            padding: 0.45rem 0.8rem;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.92);
+            border: 1px solid rgba(52, 211, 153, 0.6);
+            font-size: 0.75rem;
+            color: #a7f3d0;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .hero-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 999px;
+            background: #22c55e;
+            box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.3);
+        }
+
+        /* About */
+        .two-column {
+            display: grid;
+            grid-template-columns: minmax(0, 3fr) minmax(0, 2.2fr);
+            gap: 2.25rem;
+            align-items: flex-start;
+        }
+
+        .about-text p + p {
+            margin-top: 1rem;
+        }
+
+        .about-text p {
+            color: #d1d5db;
+            font-size: 0.98rem;
+        }
+
+        .about-details {
+            background: radial-gradient(circle at top, rgba(16, 185, 129, 0.16), transparent 60%),
+                        linear-gradient(145deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.98));
+            border-radius: 1.1rem;
+            padding: 1.6rem 1.5rem;
+            box-shadow: 0 22px 45px rgba(15, 23, 42, 0.85);
+            border: 1px solid rgba(55, 65, 81, 0.9);
+        }
+
+        .about-details h3 {
+            font-size: 1.05rem;
+            margin-bottom: 0.9rem;
+            color: #e5e7eb;
+        }
+
+        .about-details p {
+            font-size: 0.92rem;
+            color: #cbd5f5;
+            margin-bottom: 0.35rem;
+        }
+
+        .about-details strong {
+            color: #a7f3d0;
+            font-weight: 500;
+        }
+
+        /* Resume */
+        .resume-section {
+            margin-top: 2.5rem;
+        }
+
+        .resume-section:first-of-type {
+            margin-top: 1.5rem;
+        }
+
+        .resume-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #f9fafb;
+        }
+
+        .resume-item {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.94), rgba(15, 23, 42, 0.98));
+            border-radius: 1rem;
+            padding: 1.4rem 1.5rem;
+            box-shadow: 0 20px 45px rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(55, 65, 81, 0.9);
+        }
+
+        .resume-item + .resume-item {
+            margin-top: 1rem;
+        }
+
+        .resume-item-header {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+        }
+
+        .resume-item-header h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #f9fafb;
+        }
+
+        .item-subtitle {
+            font-size: 0.92rem;
+            color: #9ca3af;
+        }
+
+        .item-meta {
+            text-align: right;
+            font-size: 0.85rem;
+            color: #9ca3af;
+        }
+
+        .item-body {
+            font-size: 0.94rem;
+            color: #d1d5db;
+            margin-top: 0.5rem;
+        }
+
+        .item-list {
+            margin-top: 0.75rem;
+            padding-left: 1.25rem;
+            color: #d1d5db;
+            font-size: 0.94rem;
+        }
+
+        .item-list li + li {
+            margin-top: 0.3rem;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .skills-column h4 {
+            font-size: 1rem;
+            margin-bottom: 0.6rem;
+            color: #e5e7eb;
+        }
+
+        .skills-subheading {
+            margin-top: 1.25rem;
+        }
+
+        .tag-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+            margin-top: 0.2rem;
+        }
+
+        .tag-list li {
+            padding: 0.28rem 0.7rem;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.92);
+            border: 1px solid rgba(55, 65, 81, 0.9);
+            font-size: 0.82rem;
+            color: #d1d5db;
+            white-space: nowrap;
+        }
+
+        .tag-list li:nth-child(2n) {
+            border-color: rgba(16, 185, 129, 0.45);
+            background: rgba(6, 95, 70, 0.45);
+            color: #d1fae5;
+        }
+
+        .card-tags-label {
+            margin-top: 0.9rem;
+            font-weight: 600;
+            font-size: 0.88rem;
+            color: #a7f3d0;
+        }
+
+        /* Cards / Projects */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.6rem;
+            margin-top: 1.75rem;
+        }
+
+        .card {
+            background: linear-gradient(140deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.99));
+            border-radius: 1rem;
+            padding: 1.5rem 1.5rem 1.35rem 1.5rem;
+            box-shadow: 0 24px 50px rgba(15, 23, 42, 0.95);
+            border: 1px solid rgba(55, 65, 81, 0.9);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            background: radial-gradient(circle at top right, rgba(52, 211, 153, 0.16), transparent 55%);
+            transition: opacity 0.18s ease;
+            pointer-events: none;
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+            color: #f9fafb;
+        }
+
+        .card-meta {
+            font-size: 0.86rem;
+            color: #9ca3af;
+            margin-bottom: 0.75rem;
+        }
+
+        .card-body {
+            font-size: 0.94rem;
+            color: #d1d5db;
+            margin-top: 0.55rem;
+        }
+
+        .card-link {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            text-decoration: none;
+            color: #6ee7b7;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .card-link span {
+            font-size: 1.1rem;
+        }
+
+        .card-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Video section */
+        .video-wrapper {
+            position: relative;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 24px 60px rgba(15, 23, 42, 0.95);
+            background:
+                radial-gradient(circle at top left, rgba(16, 185, 129, 0.18), transparent 60%),
+                rgba(15, 23, 42, 0.96);
+            border: 1px solid rgba(55, 65, 81, 0.9);
+        }
+
+        .video-wrapper video {
+            width: 100%;
+            display: block;
+        }
+
+        .video-note {
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            color: #d1d5db;
+        }
+
+        /* Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.25rem;
+        }
+
+        .contact-item {
+            background: linear-gradient(145deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.98));
+            border-radius: 0.95rem;
+            padding: 1.1rem 1.2rem;
+            border: 1px solid rgba(55, 65, 81, 0.9);
+            box-shadow: 0 20px 45px rgba(15, 23, 42, 0.9);
+        }
+
+        .contact-item h3 {
+            font-size: 1rem;
+            margin-bottom: 0.4rem;
+            color: #f9fafb;
+        }
+
+        .contact-item p {
+            font-size: 0.95rem;
+            color: #d1d5db;
+        }
+
+        .contact-item a {
+            color: #6ee7b7;
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .site-footer {
+            padding: 1.8rem 0;
+            background-color: #020617;
+            border-top: 1px solid rgba(31, 41, 55, 0.9);
+            margin-top: 2.5rem;
+        }
+
+        .footer-inner {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #6b7280;
+        }
+
+        .footer-inner span {
+            color: #9ca3af;
+        }
+
+        /* Responsive design */
+        @media (max-width: 960px) {
+            .hero-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-photo {
+                order: -1;
+                margin-bottom: 1.25rem;
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .cards-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .contact-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 640px) {
+            .header-inner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .hero {
+                padding-top: 3.25rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .resume-item-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .item-meta {
+                text-align: left;
+            }
+
+            .hero h2 {
+                font-size: 1.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<header class="site-header">
+    <div class="container header-inner">
+        <div class="logo-block">
+            <h1 class="site-title">Askarov Anet</h1>
+            <p class="site-subtitle">Computer Science Student · Cybersecurity &amp; Network Security</p>
+        </div>
+        <nav class="main-nav">
+            <a href="#about">About</a>
+            <a href="#resume">Resume</a>
+            <a href="#projects">Projects</a>
+            <a href="#video">Pitch Video</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <!-- Hero / Intro -->
+    <section class="hero">
+        <div class="container hero-inner">
+            <div class="hero-text">
+                <p class="hero-eyebrow">Digital Portfolio</p>
+                <h2>Computer Science student focused on cybersecurity.</h2>
+                <p class="hero-subline">
+                    Network security · Vulnerability analysis · Incident response
+                </p>
+                <p class="hero-body">
+                    I am a Computer Science student at Seoul National University of Science and Technology,
+                    building a foundation in programming and cybersecurity while gaining experience in real-world
+                    security monitoring environments. My goal is to contribute to secure, reliable IT systems in
+                    industry through network security, vulnerability analysis, and incident response.
+                </p>
+                <div class="hero-actions">
+                    <a href="#contact" class="btn primary">Contact Me</a>
+                    <a href="CV.pdf" class="btn secondary">Download CV</a>
+                </div>
+            </div>
+            <div class="hero-photo">
+                <div class="hero-photo-frame">
+                    <img src="placeholder.jpg" alt="Portrait of Askarov Anet">
+                    <div class="hero-photo-badge">
+                        <span class="hero-dot"></span>
+                        <span>Cybersecurity · Student</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me -->
+    <section id="about" class="section">
+        <div class="container">
+            <p class="section-eyebrow">Overview</p>
+            <h2 class="section-title">About Me</h2>
+            <div class="section-content two-column">
+                <div class="about-text">
+                    <p>
+                        My academic and professional interests center on cybersecurity, including vulnerability analysis, incident response,
+                        and the design of secure infrastructures. I enjoy working with programming languages such as C, C++, Python, and Java,
+                        and I am especially interested in applying these skills to automate security monitoring and analysis tasks.
+                    </p>
+                    <p>
+                        My career goal is to work as a cybersecurity or network security engineer, contributing to the protection of critical
+                        systems and data. I bring strengths in analytical problem-solving, adaptability to new technologies, and clear,
+                        professional communication in team environments.
+                    </p>
+                </div>
+                <aside class="about-details">
+                    <h3>Quick Facts</h3>
+                    <p><strong>Location:</strong> Seoul, South Korea</p>
+                    <p><strong>Degree:</strong> B.S., Computer Science</p>
+                    <p><strong>Institution:</strong> Seoul National University of Science and Technology</p>
+                    <p><strong>GPA:</strong> 3.1 / 4.0</p>
+                    <p><strong>Interests:</strong> Cybersecurity, network security, secure systems, automation</p>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume / CV -->
+    <section id="resume" class="section section-alt">
+        <div class="container">
+            <p class="section-eyebrow">Background</p>
+            <h2 class="section-title">Resume</h2>
+
+            <div class="resume-section">
+                <h3>Education</h3>
+                <div class="resume-item">
+                    <div class="resume-item-header">
+                        <div>
+                            <h4>Seoul National University of Science and Technology</h4>
+                            <p class="item-subtitle">B.S., Computer Science</p>
+                        </div>
+                        <div class="item-meta">
+                            <p>Seoul, South Korea</p>
+                            <p>Expected December 2027</p>
+                        </div>
+                    </div>
+                    <p class="item-body">
+                        Pursuing a Bachelor of Science in Computer Science with a GPA of 3.41/4.0.
+                        Current focus on cybersecurity, computer networks, and programming.
+                        Completed IT Essentials certification from Cisco and actively working on additional
+                        technical projects and coursework related to network security and secure systems.
+                    </p>
+                </div>
+            </div>
+
+            <div class="resume-section">
+                <h3>Work Experience</h3>
+                <div class="resume-item">
+                    <div class="resume-item-header">
+                        <div>
+                            <h4>IT Security Monitoring Intern</h4>
+                            <p class="item-subtitle">Milior Logistics</p>
+                        </div>
+                        <div class="item-meta">
+                            <p>Astana, Kazakhstan</p>
+                            <p>May 2021 – August 2021</p>
+                        </div>
+                    </div>
+                    <ul class="item-list">
+                        <li>Leveraged GPS tracking technology to monitor vehicle assets and support security protocols.</li>
+                        <li>Collaborated with the security department to analyze tracking data and assist in the recovery of stolen materials.</li>
+                        <li>Contributed to system improvements that enhanced real-time monitoring and incident response efficiency.</li>
+                        <li>Gained practical experience in identifying vulnerabilities and applying security measures in a real-world environment.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="resume-section">
+                <h3>Certifications</h3>
+                <ul class="tag-list">
+                    <li>Cisco Certified Network Associate (CCNA)</li>
+                    <li>CompTIA Security+</li>
+                    <li>Cisco IT Essentials</li>
+                </ul>
+            </div>
+
+            <div class="resume-section">
+                <h3>Skills</h3>
+                <div class="skills-grid">
+                    <div class="skills-column">
+                        <h4>Cybersecurity</h4>
+                        <ul class="tag-list">
+                            <li>Network security</li>
+                            <li>Vulnerability analysis</li>
+                            <li>Incident response</li>
+                            <li>Security protocols</li>
+                            <li>Database security fundamentals</li>
+                        </ul>
+                    </div>
+                    <div class="skills-column">
+                        <h4>Programming</h4>
+                        <ul class="tag-list">
+                            <li>Python</li>
+                            <li>C</li>
+                            <li>C++</li>
+                            <li>Java</li>
+                            <li>C#</li>
+                            <li>Object-Oriented Programming (OOP)</li>
+                        </ul>
+                    </div>
+                    <div class="skills-column">
+                        <h4>Tools &amp; Technologies</h4>
+                        <ul class="tag-list">
+                            <li>GPS tracking systems</li>
+                            <li>Security monitoring tools</li>
+                            <li>Pygame</li>
+                            <li>SketchUp</li>
+                        </ul>
+                        <h4 class="skills-subheading">Soft Skills</h4>
+                        <ul class="tag-list">
+                            <li>Problem-solving</li>
+                            <li>Effective communication</li>
+                            <li>Adaptability</li>
+                            <li>Team collaboration</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Projects / Skills Showcase -->
+    <section id="projects" class="section">
+        <div class="container">
+            <p class="section-eyebrow">Projects</p>
+            <h2 class="section-title">Skills Showcase</h2>
+            <p class="section-intro">
+                Selected academic and practical projects that demonstrate my skills in cybersecurity,
+                network configuration, automation, and database security.
+            </p>
+
+            <div class="cards-grid">
+                <!-- Project 1: Secure Network Lab -->
+                <article class="card">
+                    <h3>Secure Network Lab</h3>
+                    <p class="card-meta">Course Project · 2023</p>
+                    <p class="card-body">
+                        In this lab-based project, I configured firewalls, routers, and VLANs in a controlled network
+                        environment to study secure network design and common misconfigurations. I documented
+                        vulnerabilities and tested their impact on network availability and data confidentiality.
+                    </p>
+                    <p class="card-body">
+                        I was responsible for setting up network devices, defining security rules, and executing
+                        penetration-style tests to validate the robustness of the configuration.
+                    </p>
+                    <p class="card-tags-label">Key skills</p>
+                    <ul class="tag-list">
+                        <li>Network configuration</li>
+                        <li>Firewall rules</li>
+                        <li>VLANs</li>
+                        <li>Vulnerability analysis</li>
+                        <li>Technical documentation</li>
+                    </ul>
+                </article>
+
+                <!-- Project 2: Python Automation Scripts -->
+                <article class="card">
+                    <h3>Python Automation Scripts</h3>
+                    <p class="card-meta">Personal / Course Work · 2023</p>
+                    <p class="card-body">
+                        I developed small Python scripts to automate repetitive security monitoring tasks, such as log
+                        analysis and basic anomaly detection. The scripts processed log files, extracted key security
+                        events, and generated concise summaries for faster review.
+                    </p>
+                    <p class="card-body">
+                        I focused on writing clear, reusable code and structuring the scripts so they can be extended
+                        with additional checks or data sources in the future.
+                    </p>
+                    <p class="card-tags-label">Key skills</p>
+                    <ul class="tag-list">
+                        <li>Python scripting</li>
+                        <li>Log analysis</li>
+                        <li>Automation</li>
+                        <li>Problem decomposition</li>
+                        <li>Command-line tools</li>
+                    </ul>
+                    <!-- <a href="https://github.com/askarovanets" class="card-link">
+                        View on GitHub <span>↗</span>
+                    </a> -->
+                </article>
+
+                <!-- Project 3: Database Security Case Study -->
+                <article class="card">
+                    <h3>Database Security Case Study</h3>
+                    <p class="card-meta">Academic Project · 2024</p>
+                    <p class="card-body">
+                        For this case study, I conducted SQL injection testing on a sample database application to
+                        understand how improperly handled user input can lead to data breaches. I then designed
+                        mitigation strategies and implementation guidelines to reduce the attack surface.
+                    </p>
+                    <p class="card-body">
+                        My work included creating example attack queries, analyzing their impact, and proposing
+                        secure coding practices such as parameterized queries and input validation.
+                    </p>
+                    <p class="card-tags-label">Key skills</p>
+                    <ul class="tag-list">
+                        <li>Database security</li>
+                        <li>SQL injection testing</li>
+                        <li>Threat modeling</li>
+                        <li>Security best practices</li>
+                        <li>Technical writing</li>
+                    </ul>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pitch Video -->
+    <section id="video" class="section section-alt">
+        <div class="container">
+            <p class="section-eyebrow">Introduction</p>
+            <h2 class="section-title">Personal Pitch Video</h2>
+            <p class="section-intro">
+                This short video introduces my background, strengths, and career goals in cybersecurity and IT.
+            </p>
+
+            <div class="video-wrapper">
+                <video controls>
+                    <source src="Placeholder.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+            <p class="video-note">
+                The video summarizes my interests in cybersecurity, highlights selected projects,
+                and explains how I aim to contribute to secure and reliable IT systems.
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+        <div class="container">
+            <p class="section-eyebrow">Get in touch</p>
+            <h2 class="section-title">Contact</h2>
+            <p class="section-intro">
+                For opportunities in cybersecurity, network security, or related IT roles, feel free to reach out.
+            </p>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <h3>Email</h3>
+                    <p><a href="mailto:anet@seoultech.ac.kr">anet@seoultech.ac.kr</a></p>
+                </div>
+                <div class="contact-item">
+                    <h3>Location</h3>
+                    <p>Seoul, South Korea</p>
+                </div>
+                <div class="contact-item">
+                    <h3>Profiles</h3>
+                    <p>
+                        GitHub:
+                        <a href="https://github.com/askarovanets" target="_blank" rel="noopener">
+                            askarovanets
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="container footer-inner">
+        <p>&copy; <span id="year"></span> Askarov Anet. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    // Keep the footer year up to date
+    document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
